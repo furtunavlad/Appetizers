@@ -12,7 +12,7 @@ struct AppetizerListCell: View {
     let appetizer: Appetizer
     
     var body: some View {
-        HStack {
+        HStack(spacing: 15) {
             Image("asian-flank-steak")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
