@@ -30,38 +30,10 @@ struct AppetizerDetailView: View {
                     .padding()
                 
                 HStack(spacing: 40) {
-                    VStack(spacing: 5) {
-                        Text("Calories")
-                            .font(.caption)
-                            .bold()
-                        
-                        Text("\(appetizer.calories)")
-                            .foregroundColor(.secondary)
-                            .fontWeight(.semibold)
-                            .italic()
-                    }
+                    NutritionInfo(title: "Calories", value: appetizer.calories)
+                    NutritionInfo(title: "Carbs", value: appetizer.carbs)
+                    NutritionInfo(title: "Protein", value: appetizer.protein)
                     
-                    VStack(spacing: 5) {
-                        Text("Carbs")
-                            .font(.caption)
-                            .bold()
-                        
-                        Text("\(appetizer.calories)")
-                            .foregroundColor(.secondary)
-                            .fontWeight(.semibold)
-                            .italic()
-                    }
-                    
-                    VStack(spacing: 5) {
-                        Text("Protein")
-                            .font(.caption)
-                            .bold()
-                        
-                        Text("\(appetizer.calories)")
-                            .foregroundColor(.secondary)
-                            .fontWeight(.semibold)
-                            .italic()
-                    }
                 }
             }
             
@@ -89,4 +61,24 @@ struct AppetizerDetailView: View {
 #Preview {
     AppetizerDetailView(appetizer: MockData.sampleAppetizer,
                         isShowingAppetizerDetail: .constant(true))
+}
+
+
+struct NutritionInfo: View {
+    
+    let title: String
+    let value: Int
+    
+    var body: some View {
+        VStack(spacing: 5) {
+            Text(title)
+                .font(.caption)
+                .bold()
+            
+            Text("\(value)")
+                .foregroundColor(.secondary)
+                .fontWeight(.semibold)
+                .italic()
+        }
+    }
 }

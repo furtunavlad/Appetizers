@@ -12,6 +12,9 @@ final class AppetizerListViewModel: ObservableObject {
     @Published var appetizers: [Appetizer] = []
     @Published var alertItem: AlertItem?
     @Published var isLoading = false
+    @Published var isShowingAppetizerDetail = false
+    @Published var selectedAppetizer: Appetizer?
+    
     
     func getAppetizers() {
         isLoading = true // switch on the loading screen
