@@ -18,7 +18,7 @@ struct XDissmissButton: View {
             Image(systemName: "xmark")
                 .imageScale(.small)
                 .frame(width: 44, height: 44)
-                .foregroundColor(.brandPrimary)
+                .foregroundColor(.accentColor)
         }
     }
 }

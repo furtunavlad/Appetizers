@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AppetizerDetailView: View {
     
+    @EnvironmentObject var order: Order
+    
     let appetizer: Appetizer
     @Binding var isShowingAppetizerDetail: Bool
     
@@ -30,9 +32,9 @@ struct AppetizerDetailView: View {
                     .padding()
                 
                 HStack(spacing: 40) {
-                    NutritionInfo(title: "Calories", value: appetizer.calories)
-                    NutritionInfo(title: "Carbs", value: appetizer.carbs)
-                    NutritionInfo(title: "Protein", value: appetizer.protein)
+                    NutritionInfo(title: "Calories", value: "\(appetizer.calories)")
+                    NutritionInfo(title: "Carbs", value: "\(appetizer.carbs) g")
+                    NutritionInfo(title: "Protein", value: "\(appetizer.protein) g")
                     
                 }
             }
@@ -40,10 +42,13 @@ struct AppetizerDetailView: View {
             Spacer()
             
             Button {
-                print("tapped")
+                order.add(appetizer)
+                isShowingAppetizerDetail = false
             } label: {
-                APButton(title: "RON \(appetizer.price, specifier: "%.2f") - Add to Order")
+//                APButton(title: "RON \(appetizer.price, specifier: "%.2f") - Add to Order")
+                Text("RON \(appetizer.price, specifier: "%.2f") - Add to Order")
             }
+            .modifier(StandardButtonStyle())
             .padding(.bottom, 30)
         }
         .frame(width: 320, height: 525)
@@ -67,7 +72,7 @@ struct AppetizerDetailView: View {
 struct NutritionInfo: View {
     
     let title: String
-    let value: Int
+    let value: String
     
     var body: some View {
         VStack(spacing: 5) {
@@ -75,7 +80,7 @@ struct NutritionInfo: View {
                 .font(.caption)
                 .bold()
             
-            Text("\(value)")
+            Text(value)
                 .foregroundColor(.secondary)
                 .fontWeight(.semibold)
                 .italic()
