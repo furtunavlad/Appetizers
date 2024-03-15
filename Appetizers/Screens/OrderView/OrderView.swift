@@ -21,17 +21,19 @@ struct OrderView: View {
                         }
                         .onDelete(perform: order.deleteItems)
                     }
+                    .listStyle(.plain)
                 }
                 
                 VStack {
                     Spacer()
                     
                     Button {
-                        print("order placed")
+                        print("order placed") // to do
                     } label: {
 //                        APButton(title: "RON \(order.totalPrice, specifier: "%.2f") - Place Order")
                         Text("RON \(order.totalPrice, specifier: "%.2f") - Place Order")
                     }
+                    .modifier(StandardButtonStyle())
                     .padding(.bottom, 25)
                 }
                 

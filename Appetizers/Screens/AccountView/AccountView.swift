@@ -35,7 +35,7 @@ struct AccountView: View {
                         .onSubmit { focusedTextField = nil }
                         .submitLabel(.done)
                         .keyboardType(.emailAddress)
-                        .textInputAutocapitalization(.none)
+                        .textInputAutocapitalization(.never)
                         .autocorrectionDisabled(true)
 
                     DatePicker("Birthday", selection: $viewModel.user.birthdate, in: Date().oneHundredTenYearsAgo...Date().eighteenYearsAgo, displayedComponents: .date)
